@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "30dEamOVmA7MJ/DAtE8mu710UUzlGiQDdyyvnw3ZhwM=",
+  "Source": "chat-services",
+  "BasePath": "_content/chat-services",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
