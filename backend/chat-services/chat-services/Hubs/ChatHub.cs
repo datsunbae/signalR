@@ -30,14 +30,16 @@ namespace chat_services.Hubs
             }
         }
 
-        public async Task LeaveRoom(Exception exception)
+        public override Task OnDisconnectedAsync(Exception exception)
         {
             if (_connection.TryGetValue(Context.ConnectionId, out UserConnetionRequest userConnetion))
             {
                 _connection.Remove(Context.ConnectionId);
-                await Clients.Group(userConnetion.Room).SendAsync("ReceivMessage", _botUser, $"{userConnetion.UserName} has left");
-                await SendUsersInRoom(userConnetion.Room);
+                Clients.Group(userConnetion.Room).SendAsync("ReceiveMessage", _botUser, $"{userConnetion.UserName} has left");
+                SendUsersInRoom(userConnetion.Room);
             }
+
+            return base.OnDisconnectedAsync(exception);
         }
 
         public Task SendUsersInRoom(string room)
